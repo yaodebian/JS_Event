@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>event_position</title>
+</head>
+<body>
+  <script>
+    document.onclick = function (e) {
+      var e = e || window.event;
+      // 可视区的位置
+      // console.log(e.clientX, e.clientY);
+      // 页面坐标位置(包含滚动条滚动过的位置)，比较可惜的是ie8及以下不兼容
+      // console.log(e.pageX, e.pageY);
+      // 屏幕坐标位置(相对于屏幕的坐标位置)
+      console.log(e.screenX, e.screenY);
+    }
+  </script>
+</body>
+</html>
