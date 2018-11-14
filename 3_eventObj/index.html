@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件对象</title>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: yellow;
+    }
+
+    #box1 {
+      width: 120px;
+      height: 120px;
+      background-color: red;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    #box1:hover {
+      cursor: pointer;
+    }
+
+    #box2 {
+      width: 80px;
+      height: 80px;
+      background-color: green;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    #box3 {
+      width: 60px;
+      height: 60px;
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="box"></div>
+
+  <a id="link" href="https://www.baidu.com">yaodebian</a>
+
+  <div id="box1">
+    <div id="box2">
+      <div id="box3"></div>
+    </div>
+  </div>
+
+  <script>
+    /*
+
+    var box = document.getElementById('box');
+    box.onclick = function (e) {
+      console.log(e);
+    }
+    // 经测试，在ie9以下，事件对象为undefined
+
+    */
+
+    /*
+
+    var box = document.getElementById('box');
+    box.onclick = function (e) {
+      console.log(window.event);
+    }
+    // 经测试ie浏览器均兼容window.event
+
+    */
+
+
+    /*
+
+    // 事件目标
+    var box = document.getElementById('box');
+    box.onclick = function (e) {
+      var e = window.event;
+      console.log(e.target);
+      console.log(e.srcElement);
+    }
+    // 经测试ie9及以上e.srcElement是兼容的，而在ie9以下则需要通过window.event，并且ie9以下也只能用srcElement
+    // 也就是说srcElement只能被W3C标准下的事件对象调用
+
+    */
+
+
+    /*
+
+    // 如何取消默认行为
+    var link = document.getElementById('link');
+    link.onclick = function (e) {
+      var e = e || window.event;
+      if (e.preventDefault) {
+        console.log(1);
+        e.preventDefault();
+      } else {
+        console.log(2);
+        e.returnValue = false;
+      }
+    }
+    // 经测试，ie9及以上只能通过W3C下的事件对象调用preventDefault来执行
+    // ie9以下只能通过window.event中的returnValue为false来进行设置
+
+    */
+
+    /*
+    
+    // 关于如何关闭冒泡事件传递
+    box1.onclick = function () {
+      console.log('box1');
+    }
+    box2.onclick = function () {
+      console.log('box2');
+    }
+    box3.onclick = function (e) { 
+      var e = e || window.event;
+      if (e.stopPropagation) {
+        console.log(1);
+        e.stopPropagation();
+      } else {
+        console.log(2);
+        e.cancelBubble  = true;
+      }
+      console.log('box3');
+    }
+
+    */
+
+
+
+
+  </script>
+</body>
+</html>
